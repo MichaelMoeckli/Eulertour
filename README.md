@@ -10,9 +10,9 @@ Das Programm zeigt an ob die erstellte Figur eine Eulertour, eine Halb-Eulertour
 
 Falls es eine Eulertour oder eine Halb-Eulertour in der Figur gibt wird mit der Methode eulertour() einen möglichen Weg ausgegeben. 
 
-##to do
+## to do
 
-###-Gui
+### -Gui
 User soll selbst eine Figur erstellen können. Indem er Knoten setzen kann und die Knoten mit Kanten/Geraden verbinden kann.
 
-###-Clean Code
+### -Clean Code
