@@ -1,4 +1,4 @@
-# Eulertour
+# Eulertour - work in progress
 
 version 0.1.1
 
