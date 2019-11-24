@@ -2,6 +2,8 @@
 
 version 0.1.1
 
+Gruppenarbeit
+
 Was ist eine Eulertour/Eulerkreis?
 ->
 https://de.wikipedia.org/wiki/Eulerkreisproblem
