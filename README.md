@@ -15,21 +15,22 @@ Falls es eine Eulertour oder eine Halb-Eulertour in der Figur gibt wird mit der 
 User kann selbst eine Figur erstellen können. Indem er Knoten setzen kann und die Knoten mit Kanten/Geraden verbinden kann.
 
 ## Bugs / ToDo
--Pünkte die nicht gebraucht werden müssen gelöscht werden
--Punkt array wird grösser obwohl kanten nicht genutzt werden
-~~-Was passiert mit ungebrauchten Pünkten~~	
-~~-Doppel Klick auf Pünkte vermeiden~~
--Doppelte Kanten unmöglich machen
--lösch /reset funktion
--Knoten sollten nicht aufeinander gemacht werden können
-~~-has no Eulertour graphischeinfügen ~~
--Graph grösse an anzahl Knoten anpassen (momentan max 10 Knoten)
-~~-Pünkte graphisch nummerieren ~~
-**-handleButtonMouseClicked überarbeiten**
-  -> handleButtonNewLine, handleButtonNewPoint entfernen
-  -> wenn user auf Button klick, dann Linen, sonst Knoten
--Draw Fläche verkleinern
--Help-Tab
--2 verschiedene Eulertour sollten nicht möglich sein
--Endlos-Schleife???
--Bonus: CSS
+
+-Pünkte die nicht gebraucht werden müssen gelöscht werden  
+-Punkt array wird grösser obwohl kanten nicht genutzt werden  
+~~-Was passiert mit ungebrauchten Pünkten~~  
+~~Doppel Klick auf Pünkte vermeiden~~  
+-Doppelte Kanten unmöglich machen  
+-lösch /reset funktion  
+-Knoten sollten nicht aufeinander gemacht werden können  
+~~-has no Eulertour graphischeinfügen</s>~~  
+Graph grösse an anzahl Knoten anpassen (momentan max 10 Knoten)  
+~~Pünkte graphisch nummerieren</s>~~  
+**-handleButtonMouseClicked überarbeiten**  
+  -> handleButtonNewLine, handleButtonNewPoint entfernen  
+  -> wenn user auf Button klick, dann Linen, sonst Knoten  
+-Draw Fläche verkleinern  
+-Help-Tab   
+-2 verschiedene Eulertour sollten nicht möglich sein  
+-Endlos-Schleife???  
+-Bonus: CSS  
