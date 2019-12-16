@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="eulertour:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/eulertour_jar</output-path>
+    <root id="archive" name="eulertour.jar">
+      <element id="module-output" name="eulertour" />
+    </root>
+  </artifact>
+</component>

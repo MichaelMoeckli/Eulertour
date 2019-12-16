@@ -1,5 +1,7 @@
 package eulertour;
 
+import java.util.ArrayList;
+
 public class Eulertour {
 
     private int kantenZaehler = 0;
@@ -8,9 +10,12 @@ public class Eulertour {
     private int ungeradeKanteAnzahl = 0;
     private boolean[][] matrix;
     private boolean halfEulertour = false;
-    private int EulertourStart = 0;
+    private int eulertourStart = 0;
+    private int wrongFigureCounter = 0;
+    private Boolean wrongFigure = false;
 
-    public Eulertour(Graph graph){
+
+    public Eulertour(Graph graph) {
 
         this.graph = graph;
     }
@@ -37,8 +42,8 @@ public class Eulertour {
             }
 
             if (kantenZaehler % 2 != 0) {
-                if (ungeradeKanteAnzahl < 1){
-                    EulertourStart = knotenZahl; //
+                if (ungeradeKanteAnzahl < 1) {
+                    eulertourStart = knotenZahl; //
                 }
                 ungeradeKanteAnzahl++;
             }
@@ -46,29 +51,18 @@ public class Eulertour {
             ausgabe = ausgabe + "Die Kantenanzahl des Knotens: " + knotenZahl + " beträgt " + kantenZaehler + "\n";
         }
 
-            return ausgabe;
+        return ausgabe;
 
     }
 
-    public int hasEulertour() {
-        if (ungeradeKanteAnzahl == 0) {
-            return 1;
-        }else if( ungeradeKanteAnzahl == 2){
-            halfEulertour = true; //Wird für eulerweg benutzt um einen Knoten mit ungeranden Knoten zu wählen
-            return 2;
-        }
-        else {
-            return 3;
-        }
 
-    }
 
-    private void printMatrix(){
+    private void printMatrix() {
         int i = 0;
-        while (i< this.matrix.length){
+        while (i < this.matrix.length) {
             int j = 0;
             String row = "";
-            while (j<this.matrix[i].length){
+            while (j < this.matrix[i].length) {
                 row += this.matrix[i][j];
                 j++;
             }
@@ -77,10 +71,11 @@ public class Eulertour {
         }
     }
 
-    private boolean areAllFalse(){
-        for (int i = 0; i < matrix.length; i++){
-            for(int j = 0; j <matrix[i].length; j++) {
-                if (matrix[i][j] == true) return false;
+    private boolean areAllFalse() {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (matrix[i][j] == true)
+                    return false;
             }
         }
         return true;
@@ -88,38 +83,101 @@ public class Eulertour {
 
     public String eulerweg() {
 
-        int i = EulertourStart;
+        int i = eulertourStart;
         int j = 0;
         int temp = 0;
-        String weg = "" + EulertourStart; //Durch Array ersetzen
+        String wegStr = " " + eulertourStart + " → "; //Durch Array ersetzen
+        ArrayList<Integer> weg = new ArrayList<Integer>();
 
-        while (j < this.matrix.length) {//Spalten
-            //if (weg != "0" && i == 0 && j == 0){ //Geht nur bei Eulerkreis -> STart ungleich Ende -> Start muss bei ungeraden Kantenanzahl sein
-             if(areAllFalse()==true) {
-                 return weg;
-            }
+
+        while (areAllFalse() == false && j < this.matrix.length && wrongFigure == false) {//Spalten
+
+            wrongFigureCounter++;
+
             System.out.println(i + " " + j + " " + matrix[i][j]);
             if (matrix[i][j] == true) {
 
-                weg += " " + j;
+                weg.add(j);
 
                 this.matrix[i][j] = false;
                 this.matrix[j][i] = false;
                 temp = i;
                 i = j;
-                j = temp;
+                if (temp == this.matrix.length - 1){
+                    j = 0;
+                }else{
+                    j = temp + 1;
+                }
 
-            }else if (j == this.matrix.length - 1 && this.matrix[i][j] == false) {
+            } else if (j == this.matrix.length - 1 && this.matrix[i][j] == false) {
 
                 j = 0;
 
-            }else {
-
+            } else if (j == temp && weg.size() != 0) {
+                weg.remove(weg.size()-1);
+                this.matrix[temp][i] = true;
+                this.matrix[i][temp] = true;
+                i = temp;
+                j++;
+            } else if (wrongFigureCounter > 1000){
+                System.out.println(wrongFigureCounter);
+                wrongFigure = true;
+            }
+            else {
                 j++;
             }
         }
+        for (int a = 0; a < weg.size(); a++){
+            if (wrongFigure){
+                return "";
+            }
+            if (a == weg.size()-1) {
+                wegStr += weg.get(a) + " ";
+            }
+            else{
+                wegStr += weg.get(a) + " → ";
+            }
+        }
+        return wegStr;
+    }
 
-        return weg;
+    public int hasEulertour() {
+
+        if(areAllFalse() ==  true && wrongFigureCounter == 0){
+            return 5;
+        }
+
+        if (ungeradeKanteAnzahl == 0) {
+            if (wrongFigure == true)
+                return 4;
+            else
+                return 1;
+        } else if (ungeradeKanteAnzahl == 2) {
+            halfEulertour = true; //Wird für eulerweg benutzt um einen Knoten mit ungeranden Knoten zu wählen
+            if (wrongFigure == true)
+                return 4;
+            else
+                return 2;
+        }  else {
+            if (wrongFigure == true)
+                return 4;
+            else
+                return 3;
+        }
+
+    }
+
+
+    public void delete() {
+
+        matrix = graph.getMatrix();
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                this.matrix[i][j] = false;
+                this.matrix[j][i] = false;
+            }
+        }
+
     }
 
 }

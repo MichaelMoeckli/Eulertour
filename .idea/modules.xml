@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/eulertourfx1.iml" filepath="$PROJECT_DIR$/eulertourfx1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eulertour.iml" filepath="$PROJECT_DIR$/eulertour.iml" />
     </modules>
   </component>
 </project>
