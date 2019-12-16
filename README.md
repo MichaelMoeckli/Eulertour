@@ -1,6 +1,6 @@
 # Eulertour - work in progress
 
-version 0.1.2
+version 1.0 (16.12.19)
 
 Gruppenarbeit
 
