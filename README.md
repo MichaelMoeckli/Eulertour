@@ -1,6 +1,6 @@
 # Eulertour - work in progress
 
-version 1.0 (16.12.19)
+version final (1.1) (07.01.20)
 
 Gruppenarbeit
 
@@ -20,7 +20,6 @@ User kann selbst eine Figur erstellen können. Indem er Knoten setzen kann und d
 -Punkt array wird grösser obwohl kanten nicht genutzt werden  
 -Was passiert mit ungebrauchten Pünkten  
 -Doppel Klick auf Pünkte vermeiden~~  
--Doppelte Kanten unmöglich machen  
 ~~-lösch /reset funktion  
 -Knoten sollten nicht aufeinander gemacht werden können  
 -has no Eulertour graphischeinfügen  
