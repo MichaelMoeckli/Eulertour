@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eulertour;
 
 import javafx.event.EventHandler;
@@ -10,11 +6,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-/**
- *
- * @author Master
- * Diese Klasse speichert die Punkte sprich Position und ihre anzahl Linien
- */
+
 public class Points {
 
     double posX;

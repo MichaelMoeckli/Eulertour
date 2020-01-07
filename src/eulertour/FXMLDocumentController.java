@@ -1,54 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package eulertour;
 
 import java.net.URL;
-import java.nio.file.FileSystemNotFoundException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
-/**
- * @author Master
- */
 public class FXMLDocumentController implements Initializable {
 
-    int tempindexstart = 0;
-    double tempLineXstart;
-    double tempLineYstart;
-    public Eulertour eulertour;
+    private Eulertour eulertour;
+    private double tempLineXstart;
+    private double tempLineYstart;
     int setpoint = 1; //3 boolean 1 == punktsetzbar; 2 == nochmal drücken ausserhalb Radius; 3 == Reset button
 
     @FXML
-    private Label label, hasEuler, clicklb, eulertourAusgabe;
+    private Label  hasEuler, clicklb, eulertourAusgabe;
 
-    @FXML
-    private Button button3;
 
-    @FXML
-    private Pane pane;
     @FXML
     private Pane clickpane;
 
@@ -60,39 +39,38 @@ public class FXMLDocumentController implements Initializable {
     @FXML //soll die Eulertour berechnen
     private void handleButtonCalculate(ActionEvent event) {
         eulertour = new Eulertour(g1);
-        System.out.println(eulertour.kantenAnzahl());
+        eulertour.kantenAnzahl();
         eulertourAusgabe.setText("");
         eulertourAusgabe.setFont(Font.font(15));
         if (eulertour.hasEulertour() == 1) {
-            hasEuler.setText(" Eulertour (Startpunkt = Endepunkt) ");
+            hasEuler.setText(" Eulerian cycle (start = end) ");
             eulertourAusgabe.setText(eulertour.eulerweg());
             eulertourAusgabe.setStyle("-fx-background-radius:10; -fx-background-color:#9CD777;");
             hasEuler.setStyle("-fx-background-radius:10; -fx-background-color:#9CD777;");
         } else if (eulertour.hasEulertour() == 2) {
-            hasEuler.setText(" Halb-Eulertour (Startpunkt != Endpunkt) ");
+            hasEuler.setText(" Eulerian trail (start != end) ");
             eulertourAusgabe.setText(eulertour.eulerweg());
             eulertourAusgabe.setStyle("-fx-background-radius:10; -fx-background-color:#9CD777;");
             hasEuler.setStyle("-fx-background-radius:10; -fx-background-color:#9CD777;");
         } else {
-            hasEuler.setText(" Has no Eulertour ");
+            hasEuler.setText(" Has no Eulerian path ");
             hasEuler.setStyle("-fx-background-radius:10; -fx-background-color:#F8876F;");
         }
 
 
         if (eulertour.hasEulertour() == 4) {
-            hasEuler.setText(" Please make another figure ");
+            hasEuler.setText(" Please make another figure (Do not draw more than one figure) ");
             hasEuler.setStyle("-fx-background-radius:10; -fx-background-color:#F8876F;");
         }
 
         if (eulertour.hasEulertour() == 5) {
             eulertourAusgabe.setText("");
-            hasEuler.setText(" min. 2 nodes have to be connected  ");
+            hasEuler.setText(" min. 2 nodes have to be connected ");
             hasEuler.setStyle("-fx-background-radius:10; -fx-background-color:#F8876F;");
         }
 
-        System.out.print(g1.toString());
         setpoint = 3;
-        clicklb.setText(" click reset to draw a new figure ");
+        clicklb.setText(" click <Reset> to draw a new figure ");
         clicklb.toFront();
 
 
@@ -102,10 +80,11 @@ public class FXMLDocumentController implements Initializable {
     private void handleButtonDelete(ActionEvent event) {
         eulertour = new Eulertour(g1);
         eulertour.delete();
-        System.out.print(g1.toString());
         pointList.clear();
         clickpane.getChildren().clear();
         setpoint = 1;
+        tempLineYstart = 0;
+        tempLineXstart = 0;
         eulertourAusgabe.setText("");
         hasEuler.setText("");
         clicklb.setText(" click to create a node ");
@@ -114,10 +93,13 @@ public class FXMLDocumentController implements Initializable {
     }
 
     EventHandler<MouseEvent> handelCircleClick = new EventHandler<MouseEvent>() {
+        Points center = new Points(0, 0, 0);
+        int index = 0;
+        int tempindexstart = 0;
+
         @Override
         public void handle(MouseEvent e) {
-            Points center = new Points(0, 0, 0);
-            int index = 0;
+
             for (int i = 0; i < pointList.size(); i++) {
 
                 double x2 = pointList.get(i).posX;
@@ -133,7 +115,7 @@ public class FXMLDocumentController implements Initializable {
                 setLine(tempLineXstart, tempLineYstart, center.posX, center.posY, tempindexstart, index);
                 tempLineXstart = 0;
                 tempLineYstart = 0;
-            } else {
+            }else {
                 tempLineXstart = center.posX;
                 tempLineYstart = center.posY;
                 tempindexstart = index;
@@ -183,7 +165,6 @@ public class FXMLDocumentController implements Initializable {
 
 
         //Nummer Text erstellen
-        System.out.println(pointList.size());
         Text nummer = new Text();
         String punktNummer = Integer.toString(pointList.size());
         nummer.setText(punktNummer);
@@ -194,7 +175,6 @@ public class FXMLDocumentController implements Initializable {
 
         Points p = new Points(x, y, 0);
         pointList.add(p);
-        System.out.println(pointList.get(0).posX + " " + pointList.get(0).posY);
 
     }
 

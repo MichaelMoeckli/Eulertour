@@ -57,20 +57,6 @@ public class Eulertour {
 
 
 
-    private void printMatrix() {
-        int i = 0;
-        while (i < this.matrix.length) {
-            int j = 0;
-            String row = "";
-            while (j < this.matrix[i].length) {
-                row += this.matrix[i][j];
-                j++;
-            }
-            i++;
-            System.out.println(row);
-        }
-    }
-
     private boolean areAllFalse() {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
@@ -94,7 +80,6 @@ public class Eulertour {
 
             wrongFigureCounter++;
 
-            System.out.println(i + " " + j + " " + matrix[i][j]);
             if (matrix[i][j] == true) {
 
                 weg.add(j);

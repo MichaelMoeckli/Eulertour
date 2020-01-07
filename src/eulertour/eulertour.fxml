@@ -19,7 +19,7 @@
             <Font name="Century Gothic" size="34.0" />
          </font>
       </Label>
-      <Button layoutX="449.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleButtonCalculate" prefHeight="25.0" prefWidth="166.0" style="-fx-background-color: #0099ff;" text="Calculate Eulerian path">
+      <Button layoutX="449.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleButtonCalculate" prefHeight="25.0" prefWidth="166.0" style="-fx-background-color: #0099ff;" text="Calculate ">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font></Button>
@@ -36,12 +36,12 @@
 
 
         <Pane fx:id="clickpane" layoutX="18.0" layoutY="87.0" onMouseClicked="#handleButtonMouseClicked" prefHeight="332.0" prefWidth="400.0" style="-fx-background-color: #ccf5ff;" />
-      <Label layoutX="567.0" layoutY="393.0" text="AM 2019">
+      <Label layoutX="571.0" layoutY="395.0" text="AM 2019">
          <font>
             <Font size="9.0" />
          </font>
       </Label>
-      <Label layoutX="567.0" layoutY="406.0" text="authors: Kevin Käppeli, Jarin Schnierl, Michael Möckli">
+      <Label layoutX="571.0" layoutY="406.0" text="authors: Kevin Käppeli, Jarin Schnierl, Michael Möckli">
          <font>
             <Font size="9.0" />
          </font>
@@ -50,5 +50,10 @@
       <Line endX="400.0" layoutX="18.0" layoutY="87.0" />
       <Line endY="332.0" layoutX="18.0" layoutY="87.0" />
       <Line endY="332.0" layoutX="418.0" layoutY="87.0" />
+      <Label layoutX="450.0" layoutY="162.0" text="*Definition Eulerian path, cycle and trail: https://en.wikipedia.org/wiki/Eulerian_path">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
