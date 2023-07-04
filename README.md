@@ -14,7 +14,7 @@ Falls es eine Eulertour oder eine Halb-Eulertour in der Figur gibt wird mit der 
 
 User kann selbst eine Figur erstellen können. Indem er Knoten setzen kann und die Knoten mit Kanten/Geraden verbinden kann.
 
-## Bugs / ToDo
+## Bugs / ToDo 
 
 ~~-Pünkte die nicht gebraucht werden müssen gelöscht werden  
 -Punkt array wird grösser obwohl kanten nicht genutzt werden  
